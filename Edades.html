@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sugerencias por Edad y Sexo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d7d9dc; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .contenedor {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            font-weight: bold;
+            color: #555;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box; 
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
+            background-color: #cd4628; 
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #resultado img {
+            margin-top: 20px;
+            max-width: 100%;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor">
+        <h1>Ingresa tus datos</h1>
+        
+        <label>Nombre:</label>
+        <input type="text" id="inputNombre">
+
+        <label>Edad:</label>
+        <input type="number" id="inputEdad">
+
+        <label>Sexo:</label>
+        <select id="inputSexo">
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+        </select>
+
+        <button onclick="darSugerencia()">Ver Sugerencia</button>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function darSugerencia() {
+            var nombre = document.getElementById("inputNombre").value;
+            var edad = document.getElementById("inputEdad").value;
+            var sexo = document.getElementById("inputSexo").value;
+            var cajaResultado = document.getElementById("resultado");
+
+            var imagen = "";
+
+            if (edad < 18) {
+                if (sexo === "hombre") {
+                    imagen = "https://imgs.search.brave.com/eRKojyrFHbOHyTzE-bMeX9E0BNMBRZDUsRdPirWEgs4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9waWNz/LmZpbG1hZmZpbml0/eS5jb20vcGF3X3Bh/dHJvbF90aGVfbW92/aWUtNTE4NDE3NTM3/LWxhcmdlLmpwZw";
+                } else if (sexo === "mujer") {
+                    imagen = "https://img.buzzfeed.com/buzzfeed-static/static/2020-04/20/1/asset/1e68552204e9/sub-buzz-1457-1587345116-6.jpg?resize=990:*";
+                }
+            } 
+            else if (edad >= 18 && edad <= 30) {
+                if (sexo === "hombre") {
+                    imagen = "https://imgs.search.brave.com/6lJrLhExd-4P-wVEcx_-KpzLiSbLSfIz9jOgZ1SusSg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNjQ3/MDg3NTEwL2VzL2Zv/dG8vY2x1Yi1ub2N0/dXJuby5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9S3JlaGdm/bzZXRU5IZ2ZsTzVY/cjRrZ3FERzlnMU5G/YU1ra2t2dWhqYWI4/VT0";
+                } else if (sexo === "mujer") {
+                    imagen = "https://imgs.search.brave.com/sxR71c8tqP-63NoJIpOlv--2o6qJ175aciKgB0ctn9A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zMy1t/ZWRpYTAuZmwueWVs/cGNkbi5jb20vYnBo/b3RvL0ZxaW5vYlhM/dVl0Q2F1eG9CUzRo/NVEvbC5qcGc";
+                }
+            } 
+            else if (edad > 30) {
+                if (sexo === "hombre") {
+                    imagen = "https://imgs.search.brave.com/OuEmnFL6JeIn9BRGYMZcF6rOuzQUAmHmo8bdyB8pMWM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE2/ODU2MzMyMjQ3NDUt/ZWJiOTBlNmFlMmZk/P2ZtPWpwZyZxPTYw/Jnc9MzAwMCZhdXRv/PWZvcm1hdCZmaXQ9/Y3JvcCZpeGxpYj1y/Yi00LjEuMCZpeGlk/PU0zd3hNakEzZkRC/OE1IeHpaV0Z5WTJo/OE1UZDhmR2Q1YlNV/eU1HSmhZMnRuY205/MWJtUjhaVzU4TUh4/OE1IeDhmREE9";
+                } else if (sexo === "mujer") {
+                    imagen = "https://imgs.search.brave.com/izzKbXXBYFZbyR7vjIa6YjOAEi_OVMAFqNDewtecIlo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTE2/NzEzNzA2NS9waG90/by9mcmllbmRzLWhh/dmluZy1icnVuY2gt/YXQtdGhlLXJlc3Rh/dXJhbnQtZGlyZWN0/bHktYWJvdmUtdmll/dy5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9U3Z0MFNyQjZL/MEtsT2Y2VU5qOEVk/ZHp4RU8yRWRRTGN4/dzFjdjdvQkJLcz0";
+                }
+            }
+
+            cajaResultado.innerHTML = "<img src='" + imagen + "' alt='Imagen sugerencia'>";
+        }
+    </script>
+
+</body>
+</html>
